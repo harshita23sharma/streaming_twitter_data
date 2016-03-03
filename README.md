@@ -1,10 +1,10 @@
-* Testing Environment * 
+    **Testing Environment** 
 
     Ubuntu - 15.10 ( 64 bit )
     4GB Ram
-
     i5 - Core Processor
-    Contents in folder:
+    
+    **Contents in folder:**
     
     streaming_KAFKA_producer
     tokenize.py
@@ -12,19 +12,18 @@
     intent.py
     
     
-    Technologies Used:
-    
+    **Technologies Used:**
     Apache Spark  - Big Data Processing Engine
     Tweepy - Twitter Application Programming Interface
     Kafka - Messaging System
     Sublime Text Editor - Text Editor
-    Python - Programming Language
+    Python 3.4.3 - Programming Language
     other APIs
     
-    Python Packages Used
+    **Python Packages Used**
 
-    matplotlib , wordcloud ,scipy ,geocoder
-    re , pylab , webbrowser , pygmaps
+    matplotlib , wordcloud ,scipy 
+    re , pylab , webbrowser
     json , nltk , collections , urllib2
     gensim , monkeylearn , random, csv
 
