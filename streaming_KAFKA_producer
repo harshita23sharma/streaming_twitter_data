@@ -1,0 +1,49 @@
+import sys
+from tweepy.streaming import StreamListener
+from tweepy import OAuthHandler
+from tweepy import Stream
+from kafka import KafkaClient
+from kafka import SimpleProducer
+from kafka import SimpleConsumer
+
+
+
+
+# Twitter Credentials
+atoken = "2515648536-qDPb1x6nPvtXC8E80FS30zEkihGYJO5rMTktCb5"
+asecret = "5zQjD8vjdd6GqXCoY2jiVlTkT3ez0xKMkE50iLnVylpjw"
+ckey = "N7ZAGQvOQO80BfW1OomXRkAxt"
+csecret = "L8shCMlt6gcqQU67ZXYsRgryTHTcsgrBoFBupbUA6OfiRjSpOd"
+
+auth = OAuthHandler(ckey, csecret)
+auth.set_access_token(atoken, asecret)
+
+
+class listener(StreamListener):
+    # When data
+    def on_data(self, data):
+        try:
+            
+            # 1st parameter is the kafka topic
+            a=bytes(str(data), encoding="UTF-8")
+            producer.send_messages("test_1", a)
+            print('Sent to producer')           
+        except Exception as e:
+            print(e)
+            #print(type(data))
+            print("We failed")
+    # When error
+    def on_error(self, status):
+        print(status)
+        print("We failed")
+
+# Create a stream of data
+twitterStream = Stream(auth,listener())
+
+if __name__ == "__main__":
+    
+    # Create producer and set filters on stream
+    kafka = KafkaClient("localhost:9092")
+    print("We are here !!")
+    producer = SimpleProducer(kafka)
+    twitterStream.filter(languages = ['en'], track=['the','i','to','an','and','is','e','a','u','o'])
